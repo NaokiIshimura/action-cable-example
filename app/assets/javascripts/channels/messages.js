@@ -1,5 +1,6 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
     chatroomId = $('input#message_chatroom_id').val();
+    if (App.messages) App.cable.subscriptions.remove(App.messages);
     App.messages = App.cable.subscriptions.create({channel: 'MessagesChannel', chatroom_id: chatroomId}, {
         received: function(data) {
             $("#messages").removeClass('hidden');
