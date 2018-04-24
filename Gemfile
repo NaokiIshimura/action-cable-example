@@ -5,7 +5,8 @@ source 'https://rubygems.org'
 ruby '2.5.1'
 gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'sqlite3', group: [:development, :test]
+gem 'pg', group: :production
 # Use Puma as the app server
 gem 'puma'
 # Use SCSS for stylesheets
