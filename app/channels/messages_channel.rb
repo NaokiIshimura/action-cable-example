@@ -1,5 +1,5 @@
 class MessagesChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "messages_#{params['chatroom_id']}_channel"
+    stream_from "messages_#{params['room']}_channel"
   end
 end
