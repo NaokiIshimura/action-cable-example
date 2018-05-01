@@ -1,1 +1,6 @@
-<li><%= link_to chatroom.topic, chatroom_path(chatroom) %></li>
+<li>
+  <%= link_to chatroom.topic, chatroom_path(chatroom) %>
+  <% if chatroom.user_id == current_user.id %>
+    <span class="label label-default">owner</span>
+  <% end %>
+</li>
