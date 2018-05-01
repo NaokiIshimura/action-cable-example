@@ -18,6 +18,7 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.new(chatroom_params)
+    @chatroom.user_id = current_user.id
     if @chatroom.save
       respond_to do |format|
         format.html { redirect_to @chatroom }
