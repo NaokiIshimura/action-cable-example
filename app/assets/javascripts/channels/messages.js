@@ -33,6 +33,18 @@ function createChannel(channel, room) {
     console.log('createChannel channel:' + channel + ',room:' + room)
 
     App.cable.subscriptions.create({channel: channel, room: room}, {
+        connected: function () {
+            console.log('< connected >');
+            return
+        },
+        disconnected: function () {
+            console.log('< disconnected >');
+            return
+        },
+        rejected: function () {
+            console.log('< rejected >');
+            return
+        },
         received: function (data) {
 
             $("#messages").removeClass('hidden');
