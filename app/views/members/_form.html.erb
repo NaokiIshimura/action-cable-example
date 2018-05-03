@@ -1,0 +1,29 @@
+<%#= form_with(model: member, local: true) do |form| %>
+<%= form_with(model: member, url: [chatroom, member],local: true) do |form| %>
+  <% if member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :chatroom_id, style: 'display: none'  %>
+    <%= form.number_field :chatroom_id, class: 'form-control', style: 'display: none'  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :user_id %>
+    <%# form.number_field :user_id, class: 'form-control' %>
+    <%= form.collection_select :user_id, @users, :id, :username, {}, {class: 'form-control'} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-info' %>
+  </div>
+<% end %>

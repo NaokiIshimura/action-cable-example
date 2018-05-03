@@ -1,0 +1,8 @@
+<div class="row col-md-8 col-md-offset-2">
+  <h1>Editing Member</h1>
+
+  <%= render 'form', { chatroom: @chatroom, member: @member } %>
+
+  <%= link_to 'Show', chatroom_member_path(@member.chatroom, @member) %> |
+  <%= link_to 'Back', chatroom_members_path %>
+</div>

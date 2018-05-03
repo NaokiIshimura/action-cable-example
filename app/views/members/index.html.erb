@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row col-md-8 col-md-offset-2">
+  <h1>Members</h1>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th style="display: none">Chatroom</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td style="display: none"><%= member.chatroom_id %></td>
+        <td><%= member.user.username %></td>
+        <td style="display: none"><%= link_to 'Show', chatroom_member_path(member.chatroom, member) %></td>
+        <td style="display: none"><%= link_to 'Edit', edit_chatroom_member_path(member.chatroom, member) %></td>
+        <td><%= link_to 'Destroy', chatroom_member_path(member.chatroom, member), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Member', new_chatroom_member_path %>
+</div>

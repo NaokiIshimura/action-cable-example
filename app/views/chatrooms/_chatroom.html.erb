@@ -1,6 +1,17 @@
 <li>
   <%= link_to chatroom.topic, chatroom_path(chatroom) %>
-  <% if chatroom.user_id == current_user.id %>
-    <span class="label label-default">owner</span>
+
+  <% if current_user.can_access?(chatroom) %>
+    <span class="label label-default">access</span>
   <% end %>
+
+  <% if current_user.is_member?(chatroom) %>
+    <span class="label label-default">member</span>
+  <% end %>
+
+  <% if current_user.is_owner?(chatroom) %>
+    <span class="label label-default">owner</span>
+    <%= link_to 'members', chatroom_members_path(chatroom), class: 'label label-info' %>
+  <% end %>
+
 </li>
