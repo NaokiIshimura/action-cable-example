@@ -1,0 +1,7 @@
+<div class="row col-md-8 col-md-offset-2">
+  <h1>New Member</h1>
+
+  <%= render 'form', { chatroom: @chatroom, member: @member } %>
+
+  <%= link_to 'Back', chatroom_members_path %>
+</div>

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     user = User.find_by(user_params)
     if user
       session[:user_id] = user.id
-      cookies.signed[:user_id] = user.id
+      cookies.encrypted[:user_id] = user.id
       redirect_to chatrooms_path
     else
       redirect_to login_path, flash[:notice] =  {username: ["doesn't exist"]}
@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
+    cookies.delete :user_id
     redirect_to root_path
   end
 

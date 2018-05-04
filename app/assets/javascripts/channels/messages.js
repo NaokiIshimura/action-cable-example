@@ -17,6 +17,7 @@ $(document).on('turbolinks:load', function () {
             createChannel(channel, room);
         }
 
+
     }
     // 指定したDOMが存在しない場合、
     else {

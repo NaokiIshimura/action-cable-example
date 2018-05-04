@@ -1,3 +1,18 @@
+## Forked from
+[SophieDeBenedetto/action\-cable\-example](https://github.com/SophieDeBenedetto/action-cable-example)
+
+## Change point
+- Update to rails 5.2.0.
+- Add user authentication when connecting to ActionCable.
+- Add user authentication when subscribing to ActionCable.
+- Add access restrictions to chatrooms.
+
+## Qiita
+- [【ActionCable】チャンネル接続／購読時に認証を行う \- Qiita](https://qiita.com/NaokiIshimura/items/a63cdcbec5b64c5366b6)
+- [【ActionCable】購読中のチャンネルをjsで取得／購読解除する \- Qiita](https://qiita.com/NaokiIshimura/items/140d902ef01ea9602aec)
+
+---
+
 ## Chatty: The Rails 5 + Action Cable Example App
 
 This is a really simple chatting app to demonstrate one implementation of Action Cable in a Rails 5 app. Users can sign up/log in with a username and create a chatroom or choose from an existing one to start real-time messaging.
