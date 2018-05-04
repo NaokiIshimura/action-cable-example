@@ -1,17 +1,28 @@
 <div class="row col-md-8 col-md-offset-2">
   <h1><%= @chatroom.topic %></h1>
 
-<div class="panel panel-default">
-  <% if @chatroom.messages.any? %>
-    <div class="panel-body" id="messages">
-      <%= render partial: 'messages/message', collection: @chatroom.messages.last(5)%>
-    </div>
-  <%else%>
-    <div class="panel-body hidden" id="messages">
-    </div>
-  <%end%>
-</div>
+  <div class="panel panel-default">
 
+    <% if current_user.can_access?(@chatroom) %>
+      <% if @chatroom.messages.any? %>
+        <div class="panel-body" id="messages">
+          <%= render partial: 'messages/message', collection: @chatroom.messages.last(5) %>
+        </div>
+      <% else %>
+        <div class="panel-body hidden" id="messages">
+        </div>
+      <% end %>
+    <% else %>
+      <div class="panel-body" id="messages">
+        <p><b>info:</b> You are not a member of a chat room.</p>
+      </div>
+    <% end %>
 
-  <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
+  </div>
+
+  <% if current_user.can_access?(@chatroom) %>
+    <%= render partial: 'messages/message_form', locals: { message: @message, chatroom: @chatroom } %>
+  <% else %>
+    <input id="message_chatroom_id" value="<%= @chatroom.id %>" style="display: none">
+  <% end %>
 </div>

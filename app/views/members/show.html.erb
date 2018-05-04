@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row col-md-8 col-md-offset-2">
+  <p>
+    <strong>Chatroom:</strong>
+    <%= @member.chatroom_id %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= @member.user_id %>
+  </p>
+
+  <%= link_to 'Edit', edit_chatroom_member_path(@member.chatroom, @member) %> |
+  <%= link_to 'Back', chatroom_members_path %>
+</div>
