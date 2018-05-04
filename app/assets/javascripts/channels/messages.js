@@ -17,8 +17,9 @@ $(document).on('turbolinks:load', function () {
             createChannel(channel, room);
         }
 
-        // 指定したDOMが存在しない場合、
-    } else {
+    }
+    // 指定したDOMが存在しない場合、
+    else {
         // すべてのチャンネルを購読解除する
         //removeAllChannel();
     }
@@ -33,17 +34,30 @@ function createChannel(channel, room) {
     console.log('createChannel channel:' + channel + ',room:' + room)
 
     App.cable.subscriptions.create({channel: channel, room: room}, {
+        // サブスクリプションがサーバー側で利用可能になると呼び出される
+        connected: function () {
+            console.log('< connected >');
+            return $('#messages').append("<p><b>debug:</b> ActionCable connected</p>");
+        },
+        // WebSocket接続が閉じると呼び出される
+        disconnected: function () {
+            console.log('< disconnected >');
+            return $('#messages').append("<p><b>debug:</b> ActionCable disconnected</p>");
+        },
+        // サブスクリプションがサーバーに拒否されると呼び出される
+        rejected: function () {
+            console.log('< rejected >');
+            return $('#messages').append("<p><b>debug:</b> ActionCable rejected</p>");
+            return
+        },
         received: function (data) {
-
             $("#messages").removeClass('hidden');
             return $('#messages').append(this.renderMessage(data));
         },
         room: function (data) {
-
             return data.room
         },
         renderMessage: function (data) {
-
             // 現在のroomとメッセージで指定されてるroomと一致してる場合、
             var current_page_room = $('input#message_chatroom_id').val();
             if (current_page_room == data.room) {
