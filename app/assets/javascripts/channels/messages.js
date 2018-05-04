@@ -35,14 +35,15 @@ function createChannel(channel, room) {
     App.cable.subscriptions.create({channel: channel, room: room}, {
         connected: function () {
             console.log('< connected >');
-            return
+            return $('#messages').append("<p><b>debug:</b> ActionCable connected</p>");
         },
         disconnected: function () {
             console.log('< disconnected >');
-            return
+            return $('#messages').append("<p><b>debug:</b> ActionCable disconnected</p>");
         },
         rejected: function () {
             console.log('< rejected >');
+            return $('#messages').append("<p><b>debug:</b> ActionCable rejected</p>");
             return
         },
         received: function (data) {
