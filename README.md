@@ -2,6 +2,7 @@
 [SophieDeBenedetto/action\-cable\-example](https://github.com/SophieDeBenedetto/action-cable-example)
 
 ## Change point
+- Update to rails 5.2.0.
 - Add user authentication when connecting to ActionCable.
 - Add user authentication when subscribing to ActionCable.
 - Add access restrictions to chatrooms.
